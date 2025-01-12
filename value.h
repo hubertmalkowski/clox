@@ -4,9 +4,9 @@
 typedef double Value;
 
 typedef struct {
-  int capacity;
-  int count;
-  Value *values;
+  int capacity; // Ile rzeczy możemy wrzucić do naszego "arraya"
+  int count; // Ile aktualnie rzeczy mamy w naszym "arrayu"
+  Value *values; // To jest nasz "array"
 } ValueArray ;
 
 void initValueArray(ValueArray* array);

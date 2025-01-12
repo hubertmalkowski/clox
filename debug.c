@@ -28,6 +28,15 @@ int disassembleInstruction(Chunk *chunk, int offset) {
   printf("%04d ", offset);
 
   uint8_t instruction = chunk->code[offset];
+
+    int line = getLine(chunk, offset);
+
+    printf("%04d ", offset);
+    if (offset > 0 && line == getLine(chunk, offset - 1))
+        printf("   | ");
+    else
+        printf("%4d ", line);
+
   switch (instruction) {
   case OP_RETURN:
     return simpleInstruction("OP_RETURN", offset);
