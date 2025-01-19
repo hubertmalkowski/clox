@@ -1,3 +1,3 @@
 build:
-	gcc main.c chunk.c value.c memory.c debug.c  && ./a.out
+	zig cc main.c scanner.c chunk.c value.c memory.c debug.c vm.c  && ./a.out
 	
