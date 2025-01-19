@@ -1,4 +1,5 @@
 #include "common.h"
+#include <stdio.h>
 #include <string.h>
 
 #include "scanner.h"
@@ -181,7 +182,7 @@ Token scanToken() {
   char c = advance();
 
   if(isAlpha(c)) return identifier();
-  if(isDigit(c)) number();
+  if(isDigit(c)) return number();
 
   switch (c) {
   case '(':
@@ -218,5 +219,5 @@ Token scanToken() {
     return string();
   }
 
-  return errorToken("Unexpected character.");
+  return errorToken("Unexpected character :(");
 }

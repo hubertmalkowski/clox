@@ -92,5 +92,5 @@ InterpretResult interpret(const char* source) {
 
   /* compile(source); */
   compile(source);
-  return INTERPRET_OK
+  return INTERPRET_OK;
 }
