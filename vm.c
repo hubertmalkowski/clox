@@ -1,10 +1,10 @@
 #include <stdio.h>
 
-#include "vm.h"
 #include "chunk.h"
+#include "compiler.h"
 #include "debug.h"
 #include "value.h"
-#include "compiler.h"
+#include "vm.h"
 
 VM vm;
 
@@ -85,12 +85,20 @@ static InterpretResult run() {
 #undef BINARY_OP
 }
 
-InterpretResult interpret(const char* source) {
-  /* vm.chunk = chunk; */
-  /* vm.ip = vm.chunk->code; */
-  /* return run(); */
+InterpretResult interpret(const char *source) {
+  Chunk chunk;
 
-  /* compile(source); */
-  compile(source);
+  initChunk(&chunk);
+
+  if (!compile(source, &chunk)) {
+    freeChunk(&chunk);
+    return INTERPRET_COMPILE_ERROR;
+  }
+
+  vm.chunk = &chunk;
+  vm.ip = vm.chunk->code;
+
+  freeChunk(&chunk);
+
   return INTERPRET_OK;
 }
