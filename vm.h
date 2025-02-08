@@ -1,6 +1,8 @@
 #ifndef clox_vm_h
 #define clox_vm_h
 
+#include <stdarg.h>
+
 #define STACK_MAX 256
 
 #include "chunk.h"
