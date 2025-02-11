@@ -13,4 +13,5 @@ add_executable(clox main.c
         value.c
         object.c
         vm.c
+        table.c
 )
