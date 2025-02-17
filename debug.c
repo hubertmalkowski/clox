@@ -52,6 +52,7 @@ int disassembleInstruction(Chunk *chunk, int offset) {
   case OP_FALSE:
     return simpleInstruction("OP_FALSE", offset);
 
+
   case OP_ADD:
     return simpleInstruction("OP_ADD", offset);
   case OP_SUBTRACT:
@@ -72,6 +73,19 @@ int disassembleInstruction(Chunk *chunk, int offset) {
 
   case OP_LESS:
     return simpleInstruction("OP_LESS", offset);
+
+  case OP_PRINT:
+    return simpleInstruction("OP_PRINT", offset);
+
+
+  case OP_POP:
+    return simpleInstruction("OP_POP", offset);
+
+
+  case OP_DEFINE_GLOBAL:
+    return constantInstruction("OP_DEFINE_GLOBAL", chunk, offset);
+
+
   default:
     printf("Unknown opcode %d\n", instruction);
     return offset + 1;

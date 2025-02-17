@@ -21,7 +21,6 @@ void freeChunk(Chunk *chunk) {
   freeValueArray(&chunk->constants);
   initChunk(chunk);
 }
-
 void writeChunk(Chunk *chunk, uint8_t byte, int line) {
   if (chunk->count + 1 > chunk->capacity) {
     int oldCapacity = chunk->capacity;

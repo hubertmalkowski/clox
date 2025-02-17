@@ -18,7 +18,10 @@ typedef enum {
   OP_MULTIPLY,
   OP_DIVIDE,
   OP_NOT,
-  OP_NEGATE, 
+  OP_NEGATE,
+  OP_PRINT,
+  OP_POP,
+  OP_DEFINE_GLOBAL
 } OpCode;
 
 typedef struct {
@@ -33,17 +36,15 @@ typedef struct {
 
   int line_capacity;
   int line_count;
-  LineEntry* lines; 
+  LineEntry *lines;
 
   ValueArray constants;
 } Chunk;
 
-void initChunk(Chunk* chunk);
-void freeChunk(Chunk* chunk);
-void writeChunk(Chunk* chunk, uint8_t byte, int line);
-int addConstant(Chunk* chunk, Value value);
-int getLine(Chunk* chunk, int offset);
-
-
+void initChunk(Chunk *chunk);
+void freeChunk(Chunk *chunk);
+void writeChunk(Chunk *chunk, uint8_t byte, int line);
+int addConstant(Chunk *chunk, Value value);
+int getLine(Chunk *chunk, int offset);
 
 #endif // !clox_chunk_h
